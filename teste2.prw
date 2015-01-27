@@ -3,15 +3,6 @@
 User Function cleber2TSTNew()
 
 	MsgAlert( RetMsg())
-	dbselect("SF2")
-	dbselect("SF2")
-	dbselect("SF2")
-	dbselect("SF2")
-	dbselect("SF2")
-	dbselect("SF2")
-	dbselect("SF2")
-	dbselect("SF2")
-	dbselect("SF2")
 
 	Return nil
 
