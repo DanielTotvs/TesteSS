@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root xmlns:ns2="br.com.totvs.tds.sourcestamp.db.internal.xml.RiskOccurence">
+    <version>1.0.0.201412090346</version>
+    <filename>teste2.prw</filename>
+    <occurrences>
+        <occurrence category="Warning" riskRef="risk1">5</occurrence>
+        <occurrence category="Warning" riskRef="risk1">6</occurrence>
+    </occurrences>
+</root>
