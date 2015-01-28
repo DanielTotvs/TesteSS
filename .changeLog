@@ -1,99 +1,108 @@
 {
 diff --git a/.changeLog b/.changeLog
-index c60f7a0..e69de29 100644
+index e69de29..0f4e75e 100644
 --- a/.changeLog
 +++ b/.changeLog
-@@ -1,76 +0,0 @@
--{
--diff --git a/.changeLog b/.changeLog
--new file mode 100644
--index 0000000..cb621a6
----- /dev/null
--+++ b/.changeLog
--@@ -0,0 +1,35 @@
--+diff --git a/teste2.prw b/teste2.prw
--+index 6a8d6b4..1786ae9 100644
--+--- a/teste2.prw
--++++ b/teste2.prw
--+@@ -3,6 +3,13 @@
--+ User Function cleber2TSTNew()
--+ 
--+ 	MsgAlert( RetMsg())
--++	MsgAlert( RetMsg())
--++	MsgAlert( RetMsg())
--++	MsgAlert( RetMsg())
--++	MsgAlert( RetMsg())
--++	
--++	dbselect("SF2")
--++	
--+ 
--+ 	Return nil
--+ 
--+
--+
--+diff --git a/teste2.risk b/teste2.risk
--+index d61ef5d..e72e049 100644
--+--- a/teste2.risk
--++++ b/teste2.risk
--+@@ -2,5 +2,7 @@
--+ <root xmlns:ns2="br.com.totvs.tds.sourcestamp.db.internal.xml.RiskOccurence">
--+     <version>1.0.0.201412090346</version>
--+     <filename>teste2.prw</filename>
--+-    <occurrences/>
--++    <occurrences>
--++        <occurrence category="Warning" riskRef="risk1">10</occurrence>
--++    </occurrences>
--+ </root>
--+
--+
--
--}{
--diff --git a/teste2.prw b/teste2.prw
--index 1786ae9..2fc6b4a 100644
----- a/teste2.prw
--+++ b/teste2.prw
--@@ -3,10 +3,7 @@
-- User Function cleber2TSTNew()
-- 
-- 	MsgAlert( RetMsg())
---	MsgAlert( RetMsg())
---	MsgAlert( RetMsg())
---	MsgAlert( RetMsg())
---	MsgAlert( RetMsg())
--+
-- 	
-- 	dbselect("SF2")
-- 	
--
--}{
--diff --git a/teste2.risk b/teste2.risk
--index e72e049..f40c7ba 100644
----- a/teste2.risk
--+++ b/teste2.risk
--@@ -3,6 +3,6 @@
--     <version>1.0.0.201412090346</version>
--     <filename>teste2.prw</filename>
--     <occurrences>
---        <occurrence category="Warning" riskRef="risk1">10</occurrence>
--+        <occurrence category="Warning" riskRef="risk1">7</occurrence>
--     </occurrences>
-- </root>
--
--}
+@@ -0,0 +1,99 @@
++{
++diff --git a/.changeLog b/.changeLog
++index c60f7a0..e69de29 100644
++--- a/.changeLog
+++++ b/.changeLog
++@@ -1,76 +0,0 @@
++-{
++-diff --git a/.changeLog b/.changeLog
++-new file mode 100644
++-index 0000000..cb621a6
++---- /dev/null
++-+++ b/.changeLog
++-@@ -0,0 +1,35 @@
++-+diff --git a/teste2.prw b/teste2.prw
++-+index 6a8d6b4..1786ae9 100644
++-+--- a/teste2.prw
++-++++ b/teste2.prw
++-+@@ -3,6 +3,13 @@
++-+ User Function cleber2TSTNew()
++-+ 
++-+ 	MsgAlert( RetMsg())
++-++	MsgAlert( RetMsg())
++-++	MsgAlert( RetMsg())
++-++	MsgAlert( RetMsg())
++-++	MsgAlert( RetMsg())
++-++	
++-++	dbselect("SF2")
++-++	
++-+ 
++-+ 	Return nil
++-+ 
++-+
++-+
++-+diff --git a/teste2.risk b/teste2.risk
++-+index d61ef5d..e72e049 100644
++-+--- a/teste2.risk
++-++++ b/teste2.risk
++-+@@ -2,5 +2,7 @@
++-+ <root xmlns:ns2="br.com.totvs.tds.sourcestamp.db.internal.xml.RiskOccurence">
++-+     <version>1.0.0.201412090346</version>
++-+     <filename>teste2.prw</filename>
++-+-    <occurrences/>
++-++    <occurrences>
++-++        <occurrence category="Warning" riskRef="risk1">10</occurrence>
++-++    </occurrences>
++-+ </root>
++-+
++-+
++-
++-}{
++-diff --git a/teste2.prw b/teste2.prw
++-index 1786ae9..2fc6b4a 100644
++---- a/teste2.prw
++-+++ b/teste2.prw
++-@@ -3,10 +3,7 @@
++- User Function cleber2TSTNew()
++- 
++- 	MsgAlert( RetMsg())
++--	MsgAlert( RetMsg())
++--	MsgAlert( RetMsg())
++--	MsgAlert( RetMsg())
++--	MsgAlert( RetMsg())
++-+
++- 	
++- 	dbselect("SF2")
++- 	
++-
++-}{
++-diff --git a/teste2.risk b/teste2.risk
++-index e72e049..f40c7ba 100644
++---- a/teste2.risk
++-+++ b/teste2.risk
++-@@ -3,6 +3,6 @@
++-     <version>1.0.0.201412090346</version>
++-     <filename>teste2.prw</filename>
++-     <occurrences>
++--        <occurrence category="Warning" riskRef="risk1">10</occurrence>
++-+        <occurrence category="Warning" riskRef="risk1">7</occurrence>
++-     </occurrences>
++- </root>
++-
++-}
++\ No newline at end of file
++
++}{
++diff --git a/subFolder1/subFolder2/teste3.txt b/subFolder1/subFolder2/teste3.txt
++new file mode 100644
++index 0000000..e69de29
++--- /dev/null
+++++ b/subFolder1/subFolder2/teste3.txt
++
++}{
++diff --git a/subFolder1/teste2.txt b/subFolder1/teste2.txt
++new file mode 100644
++index 0000000..e69de29
++--- /dev/null
+++++ b/subFolder1/teste2.txt
++
++}
 \ No newline at end of file
-
-}{
-diff --git a/subFolder1/subFolder2/teste3.txt b/subFolder1/subFolder2/teste3.txt
-new file mode 100644
-index 0000000..e69de29
---- /dev/null
-+++ b/subFolder1/subFolder2/teste3.txt
-
-}{
-diff --git a/subFolder1/teste2.txt b/subFolder1/teste2.txt
-new file mode 100644
-index 0000000..e69de29
---- /dev/null
-+++ b/subFolder1/teste2.txt
 
 }
