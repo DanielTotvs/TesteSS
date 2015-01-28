@@ -2,6 +2,10 @@
 
 User Function cleber2TSTNew()
 
+
+	MsgAlert( RetMsg())
+	
+	MsgAlert( RetMsg())
 	MsgAlert( RetMsg())
 
 	
