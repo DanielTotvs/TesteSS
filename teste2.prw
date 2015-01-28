@@ -3,6 +3,13 @@
 User Function cleber2TSTNew()
 
 	MsgAlert( RetMsg())
+	MsgAlert( RetMsg())
+	MsgAlert( RetMsg())
+	MsgAlert( RetMsg())
+	MsgAlert( RetMsg())
+	
+	dbselect("SF2")
+	
 
 	Return nil
 
