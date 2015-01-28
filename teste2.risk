@@ -3,6 +3,6 @@
     <version>1.0.0.201412090346</version>
     <filename>teste2.prw</filename>
     <occurrences>
-        <occurrence category="Warning" riskRef="risk1">10</occurrence>
+        <occurrence category="Warning" riskRef="risk1">7</occurrence>
     </occurrences>
 </root>
