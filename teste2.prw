@@ -10,6 +10,9 @@ User Function cleber2TSTNew()
 
 	
 	dbselect("SF2")
+	dbselect("SF2")
+	dbselect("SF2")
+	dbselect("SF2")
 	
 
 	Return nil

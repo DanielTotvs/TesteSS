@@ -4,5 +4,8 @@
     <filename>teste2.prw</filename>
     <occurrences>
         <occurrence category="Warning" riskRef="risk1">11</occurrence>
+        <occurrence category="Warning" riskRef="risk1">12</occurrence>
+        <occurrence category="Warning" riskRef="risk1">13</occurrence>
+        <occurrence category="Warning" riskRef="risk1">14</occurrence>
     </occurrences>
 </root>
