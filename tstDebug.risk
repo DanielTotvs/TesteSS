@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root xmlns:ns2="br.com.totvs.tds.sourcestamp.db.internal.xml.RiskOccurence">
+    <version>1.0.0.201412090346</version>
+    <filename>tstDebug.prw</filename>
+    <occurrences>
+        <occurrence category="Warning" riskRef="risk1">6</occurrence>
+        <occurrence category="Warning" riskRef="risk1">7</occurrence>
+        <occurrence category="Warning" riskRef="risk1">8</occurrence>
+        <occurrence category="Warning" riskRef="risk1">9</occurrence>
+        <occurrence category="Warning" riskRef="risk1">10</occurrence>
+        <occurrence category="Warning" riskRef="risk1">11</occurrence>
+    </occurrences>
+</root>
