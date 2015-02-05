@@ -1,260 +1,35 @@
 {
-diff --git a/.user b/.user
-index 98e3563..162cb8b 100644
---- a/.user
-+++ b/.user
-@@ -1,6 +1,6 @@
- developer.email=daniel.yampolschi@totvs.com.br
- developer.name=DanielTotvs
--developer.level=6
-+developer.level=1
- machine.name=TEC-DANIELMOTTA
- machine.ip6=fe80:0:0:0:449e:b3bb:ab71:57e%10
- machine.ip4=172.16.84.32
-
-}{
-diff --git a/Novo_Projeto/src/ADVPL/escolheNum.prw b/Novo_Projeto/src/ADVPL/escolheNum.prw
+diff --git a/Novo_Projeto/src/ADVPL/pb.prw b/Novo_Projeto/src/ADVPL/pb.prw
 new file mode 100644
-index 0000000..6a91f7f
+index 0000000..3f8b5e3
 --- /dev/null
-+++ b/Novo_Projeto/src/ADVPL/escolheNum.prw
-@@ -0,0 +1,96 @@
-+user function escolheNum()
-+local n, cResp, cMsg := ""
-+local aOpcoes := {}
++++ b/Novo_Projeto/src/ADVPL/pb.prw
+@@ -0,0 +1,12 @@
++#include 'protheus.ch'
++#include 'parmtype.ch'
 +
-+for n := 1 to 5
-+	aAdd(aOpcoes, strZero(n,1,0))
-+next
++user function pb(cParam)
 +
-+while !(cResp == "*")
-+	cResp := tela(aOpcoes)
-+
-+	if cResp == "1"
-+		cMsg := "Voc? escolheu o numero 1"
-+	elseif cResp == "2"
-+		cMsg := "Voc? escolheu o numero 2"
-+	elseif cResp == "3"
-+		cMsg := "Voc? escolheu o numero 3"
-+	elseif cResp == "4"
-+		cMsg := "Voc? escolheu o numero 4"
-+	elseif cResp == "5"
-+		cMsg := "Voc? escolheu o numero 5"
-+	else
-+		cMsg := "Nenhum n?mero escolhido"
-+	endif
-+
-+	if !empty(cResp)
-+		if cResp == "2" .or. cResp == "4"
-+			cMsg += " e ? PAR"
-+		else
-+			cMsg += " e ? IMPAR"
-+		endif
-+	endif
-+
-+	if !(cResp == "*")
-+		msgAlert(cMsg)
-+	endif
-+
-+enddo
-+
++	Local value
++	
++	value := getapores(cParam)
++	
++	return encode64(value)
++	
 +return
-+
-+static function tela(aaOpcoes)
-+Local oDlg,oSay1,oBtn
-+
-+private cOpcao := ""
-+
-+if !(valType(aaOpcoes) == "A")
-+	msgAlerta("Parametro aaOpcoes n?o ? uma lista (array)")
-+	return cOpcao
-+endif
-+
-+oDlg := MSDIALOG():Create()
-+oDlg:cName := "oDlg"
-+oDlg:cCaption := "Escolha um numero"
-+oDlg:nLeft := 0
-+oDlg:nTop := 0
-+oDlg:nWidth := 400
-+oDlg:nHeight := 250
-+oDlg:lCentered := .T.
-+
-+oSay1 := TSAY():Create(oDlg)
-+oSay1:cName := "oSay1"
-+oSay1:cCaption := "Escolha um n?mero acionando um dos bot?es abaixo."
-+oSay1:nLeft := 10
-+oSay1:nTop := 28
-+oSay1:nWidth := 250
-+oSay1:nHeight := 17
-+oSay1:lTransparent := .T.
-+
-+oBtn := TButton():Create(oDlg)
-+oBtn:cCaption := "<nenhum>"
-+oBtn:blClicked := {|| cOpcao := "", oDlg:end() }
-+oBtn:nWidth := 90
-+oBtn:nTop := 90
-+oBtn:nLeft := 10
-+
-+oBtn := TButton():Create(oDlg)
-+oBtn:cCaption := "<encerrar>"
-+oBtn:blClicked := {|| cOpcao := "*", oDlg:end() }
-+oBtn:nWidth := 90
-+oBtn:nTop := 90
-+oBtn:nLeft := 110
-+
-+aEval(aaOpcoes, { |x,i| ;
-+	oBtn := TButton():Create(oDlg),;
-+	oBtn:cCaption := x,;
-+	oBtn:blClicked := &("{|| cOpcao := '"+x+"', oDlg:end() }"),;
-+	oBtn:nWidth := 30,;
-+	oBtn:nTop := 60,;
-+	oBtn:nLeft := (10 * i) + (oBtn:nWidth*(i-1));
-+	})
-+
-+oDlg:Activate()
-+
-+Return cOpcao
-+
-
-}{
-diff --git a/Novo_Projeto/src/ADVPL/mscalendgrid.prw b/Novo_Projeto/src/ADVPL/mscalendgrid.prw
-new file mode 100644
-index 0000000..0b721f7
---- /dev/null
-+++ b/Novo_Projeto/src/ADVPL/mscalendgrid.prw
-@@ -0,0 +1,87 @@
-+#include "TOTVS.CH"
-+
-+User Function MsCalendGrid()  
-+
-+Private ntasks := 1
-+
-+DEFINE DIALOG oDlg TITLE "Exemplo MsCalendGrid" FROM 180,180 TO 660,900 PIXEL	    
-+// Cria Calend?rio    
-+nResolution := 4    
-+oMsCalendGrid := MsCalendGrid():New( oDlg, 01, 01, 380,184,;
-+            date(), nResolution, ,{|x,y| Alert(x) },;
-+            RGB(255,255,196), {|x,y|Alert(x,y)}, .T. )                          
-+
-+// Adiciona periodos    
-+oMsCalendGrid:Add('caption 01', ntasks, 10, 20, RGB(255,000,0), 'Descricao 01')
-+ntasks++
-+oMsCalendGrid:Add('caption 02', ntasks, 20, 30, RGB(255,255,0), 'Descricao 02')
-+ntasks++
-+oMsCalendGrid:Add('caption 03', ntasks, 01, 05, RGB(255,0,255), 'Descricao 03')
-+ntasks++
-+
-+oTask:= tPanel():Create(oDlg,184,000,"",,,,CLR_YELLOW,CLR_BLUE,084,025)
-+cTaskDesc := Space(10)
-+oTaskDesk := TGet():New( 001,0001,{|x| if(!Empty(x), cTaskDesc := x , cTaskDesc) },oTask,040,009,"@!",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTaskDesc,,,, )
-+cTaskIni := "000"
-+oTaskIni := TGet():New( 001,0041,{|x| if(!Empty(x), cTaskIni := x , cTaskIni) },oTask,010,009,"@R 999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTaskIni,,,, )
-+cTaskFin := "000"
-+oTaskFin := TGet():New( 001,0061,{|x| if(!Empty(x), cTaskFin := x , cTaskFin) },oTask,020,009,"@R 999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTaskFin,,,, )
-+nColor := CLR_HRED
-+oTaskAdd:= TButton():New( 013, 001, "Add Tarefa"  ,oTask,{|| oMsCalendGrid:Add(cTaskDesc, ntasks, val(cTaskIni), val(cTaskFin), nColor , 'Descricao 01'), If(val(cTaskIni)>0,( aAdd(aTasks,Alltrim(Str(ntasks))),oTasks:SetItems(aTasks),ntasks++),.F.)     }	,60,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+oTaskCor:= TButton():New( 013, 061, "Cor"  ,oTask,{|| TColorTriangle(@nColor) }	,20,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+oTask2:= tPanel():Create(oDlg,184,090,"",,,,CLR_YELLOW,CLR_BLUE,064,050)
-+aTasks	:= {'1','2','3'}
-+nTask 	:= 1
-+cTask	:= Alltrim(Str(nTask))
-+oTasks := TComboBox():New(001,001,{|u|if(PCount()>0,cTask:=u,cTask)},aTasks,30,20,oTask2,,{|| nTask := aScan(aTasks,cTask)},,,,.T.,,,,,,,,,'cTask')
-+cTaskInter := "000"
-+oTaskInter := TGet():New( 001,031,{|x| if(!Empty(x), cTaskInter := x , cTaskInter) },oTask2,30,009,"@R 999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTaskInter,,,, )
-+TButton():New( 013,001, "Del Tarefa"  ,oTask2,{|| If(Val(cTask)>0 .and. oMsCalendGrid:Delete(Val(cTask),Val(cTaskInter)), ( aDel(aTasks,nTask), aSize(aTasks, Len(aTasks)-1),if(Len(aTasks)==0,(aTasks:={'0'},ntasks 	:= 1),.F.),oTasks:SetItems(aTasks), nTask:=1 ) ,.F.)	}	,60,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 023, 001, "ChangeColor"  ,oTask2,{|| oMsCalendGrid:ChangeColor( Val(cTask), Val(cTaskInter), nColor )	}	,40,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 023, 041, "Cor"  ,oTask2,{|| TColorTriangle(@nColor) }	,20,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 033, 001, "GetEscala"  ,oTask2,{|| Alert(oMsCalendGrid:GetIntervalTime(Val(cTask),Val(cTaskInter)))	}	,60,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+oTask3:= tPanel():Create(oDlg,184,180,"",,,,CLR_YELLOW,CLR_BLUE,068,060)
-+TButton():New( 001, 001, "GoPrev"  	,oTask3,{|| oMsCalendGrid:GoPrev() }	,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 001, 031, "GoNext"  	,oTask3,{|| oMsCalendGrid:GoNext() }	,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 011, 001, "Reset"  	,oTask3,{|| oMsCalendGrid:Reset() }		,60,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 021, 001, "SetDefColor"  	,oTask3,{|| oMsCalendGrid:SetDefColor(nColor),oMsCalendGrid:Refresh() }		,40,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 021, 041, "Cor"  	,oTask3,{|| TColorTriangle(@nColor) }		,20,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+cTaskDataIni := "  /  /    "
-+oTaskInter := TGet():New( 032,000,{|x| if(!Empty(x), cTaskDataIni := x , cTaskDataIni) },oTask3,30,009,"@",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTaskDataIni,,,, )
-+TButton():New( 033, 031, "SetDateIni"  	,oTask3,{|| oMsCalendGrid:SetDateIni(cTod(cTaskDataIni)) }		,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+cTaskResolu := "000"
-+oTaskInter := TGet():New( 044,000,{|x| if(!Empty(x), cTaskResolu := x , cTaskResolu) },oTask3,30,009,"@R 999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cTaskResolu,,,, )
-+TButton():New( 045, 031, "SetResolution"  	,oTask3,{|| oMsCalendGrid:SetResolution(Val(cTaskResolu)) }		,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+oTask4:= tPanel():Create(oDlg,184,260,"",,,,CLR_YELLOW,CLR_BLUE,068,060)
-+TButton():New( 001, 001, "Horas"  	,oTask4,{|| oMsCalendGrid:SetTimeUnit(0) }	,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+TButton():New( 001, 031, "Dias"  	,oTask4,{|| oMsCalendGrid:SetTimeUnit(1) }	,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+cLine := "01"
-+oLine := TGet():New( 012,000,{|x| if(!Empty(x), cLine := x , cLine) },oTask4,30,009,"@R 99",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cLine,,,, )
-+TButton():New( 013, 031, "nLineAtu"  	,oTask4,{|| oMsCalendGrid:nLineAtu := Val(cLine) }		,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+cZoom := "100"
-+oLine := TGet():New( 022,000,{|x| if(!Empty(x), cZoom := x , cZoom) },oTask4,30,009,"@R 999",,0,,,.F.,,.T.,,.F.,,.F.,.F.,,.F.,.F.,,cZoom,,,, )
-+TButton():New( 023, 031, "nZoom"  	,oTask4,{|| oMsCalendGrid:nZoom := Val(cZoom) }		,30,10,,,.F.,.T.,.F.,,,{|| .T.},,.F. )
-+
-+/*
-+oMsCalendGrid:cTopMsg
-+
-+oMsCalendGrid:nZoom
-+*/
-+ACTIVATE DIALOG oDlg CENTERED 
-+Return
-+
-+Static Function TColorTriangle(nColor)  
-+DEFINE DIALOG oDlg TITLE "Exemplo TColorTriangle" FROM 180,180 TO 350,580 PIXEL	    
-+// Usando New         
-+oTColorTriangle2 := tColorTriangle():New(0,0,oDlg,200,80)    
-+oTColorTriangle2:SetColorIni( nColor )  
-+//ACTIVATE DIALOG oDlg CENTERED 
-+oDlg:Activate(,,,.T.,{||nColor := oTColorTriangle2:RetColor()},,{|| } )
-+Return 
 \ No newline at end of file
 
 }{
-diff --git a/Novo_Projeto/src/ADVPL/tbutton.prw b/Novo_Projeto/src/ADVPL/tbutton.prw
+diff --git a/mscalendgrid.risk b/mscalendgrid.risk
 new file mode 100644
-index 0000000..639fa21
+index 0000000..c54fcd6
 --- /dev/null
-+++ b/Novo_Projeto/src/ADVPL/tbutton.prw
-@@ -0,0 +1,23 @@
-+#include "TOTVS.CH"
-+User Function TButton()  
-+	
-+	DEFINE DIALOG oDlg TITLE "Exemplo TButton" FROM 180,180 TO 550,700 PIXEL	    
-+	
-+	// Usando o New    
-+	
-+	oPanel:= tPanel():New(01,01,,oDlg,,,,CLR_YELLOW,CLR_BLUE,35,15)
-+	oTButton1 := TButton():New( 002, 002, "Bot?o &A",oPanel,{||alert("Bot?o A")}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )    
-+	TButton():New( 002, 035, "Hide",oDlg,{||oTButton1:lVisible := .F. }, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	TButton():New( 002, 065, "Show",oDlg,{||oTButton1:lVisible := .T.}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	TButton():New( 002, 095, "HidePanel",oDlg,{||oPanel:lVisible := .F.}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	TButton():New( 002, 125, "ShowPanel",oDlg,{||oPanel:lVisible := .T.}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	
-+	oTButton2 := TButton():New( 022, 002, "Bot?o &B",oDlg,{||alert("Bot?o B")}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )    
-+	TButton():New( 022, 035, "Hide",oDlg,{||oTButton2:lVisible := .F. }, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	TButton():New( 022, 065, "Show",oDlg,{||oTButton2:lVisible := .T.}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	oTButton3 := TButton():New( 042, 002, "Bot?o &C",oDlg,{||alert("Bot?o C")}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	TButton():New( 042, 035, "Hide",oDlg,{||oTButton3:lVisible := .F. }, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+	TButton():New( 042, 065, "Show",oDlg,{||oTButton3:lVisible := .T.}, 30,10,,,.F.,.T.,.F.,,.F.,,,.F. )
-+
-+	ACTIVATE DIALOG oDlg CENTERED 
-+Return
-\ No newline at end of file
-
-}{
-diff --git a/escolheNum.risk b/escolheNum.risk
-new file mode 100644
-index 0000000..111dd49
---- /dev/null
-+++ b/escolheNum.risk
++++ b/mscalendgrid.risk
 @@ -0,0 +1,6 @@
 +<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 +<root xmlns:ns2="br.com.totvs.tds.sourcestamp.db.internal.xml.RiskOccurence">
 +    <version>1.0.0.201412090346</version>
-+    <filename>escolheNum.prw</filename>
++    <filename>mscalendgrid.prw</filename>
 +    <occurrences/>
 +</root>
 
