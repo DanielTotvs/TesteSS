@@ -1,7 +1,9 @@
 #include "TOTVS.CH"
 User Function TButton()  
 	
-	DEFINE DIALOG oDlg TITLE "Exemplo TButton" FROM 180,180 TO 550,700 PIXEL	    
+	DEFINE DIALOG oDlg TITLE "Exemplo TButton" FROM 180,180 TO 550,700 PIXEL
+	
+	dbselect("SF2")	    
 	
 	// Usando o New    
 	
