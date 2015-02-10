@@ -1,11 +1,11 @@
 #include 'protheus.ch'
 #include 'parmtype.ch'
 
-user function pb(cParam)
+user function pb2(cParam)
 
 	Local value
 	
 	value := getapores(cParam)
 	
-return encode64(value)
+return value
 	
