@@ -2,19 +2,16 @@
 
 User Function cleber2TSTNew()
 
-
 	MsgAlert( RetMsg())
 
 	dbselect("SF2")
-		dbselect("SF2")
-			dbselect("SF2")
-				dbselect("SF2")
-					dbselect("SF2")
+	dbselect("SF2")
+	dbselect("SF2")
 	
 	MsgAlert( RetMsg())
 	MsgAlert( RetMsg())
 
-	Return nil
+Return nil
 
 Static Function RetMsg()
 
