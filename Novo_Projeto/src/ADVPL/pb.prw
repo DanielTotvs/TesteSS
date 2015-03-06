@@ -17,6 +17,12 @@ user function pb(cParam)
 	Local value
 	ConOut("text")
 	ConOut("text")
+	ConOut("text")
+	ConOut("text")
+	ConOut("text")
+	ConOut("text")
+	ConOut("text")
+	ConOut("text")
 
 	value := getapores(cParam)
 	
