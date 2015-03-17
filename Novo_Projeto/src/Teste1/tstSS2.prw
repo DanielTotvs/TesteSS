@@ -35,6 +35,9 @@ user function tstSS2()
 			msgAlert(cMsg)
 		endif
 
+		dbselect("SF2")
+		dbselect("SF2")
+
 
 	enddo
 
@@ -46,8 +49,6 @@ static function tela2(aaOpcoes)
 	Local oDlg,oSay1,oBtn
 
 	private cOpcao := ""
-
-	dbselect("SF2")
 
 	if !(valType(aaOpcoes) == "A")
 		msgAlerta("Parametro aaOpcoes não é uma lista (array)")
