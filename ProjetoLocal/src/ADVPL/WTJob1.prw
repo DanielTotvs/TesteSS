@@ -3,8 +3,7 @@ User Function WTJob1
 	ConOut( dtoc( Date() )+" "+Time()+" Iniciando o job...." )   
 	While !KillApp()
 		nVolta++
-		ConOut( dtoc( Date() )+" "+Time()+" Executando os comandos" )
-
+		ConOut( dtoc( Date() )+" "+Time()+" Executando os comandos..." )
 		If nVolta > 10
 			volta:=0
 			ConOut( dtoc( Date() )+" "+Time()+" Fim do Job" ) // Joga a mensagem no console
