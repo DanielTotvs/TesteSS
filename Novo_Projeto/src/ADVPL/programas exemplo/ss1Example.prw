@@ -5,4 +5,5 @@ user function ss1Example()
 	conout("ss1Example")
 	conout("ss1Example")
 	conout("ss1Example")
+	conout("ss1Example")
 return
