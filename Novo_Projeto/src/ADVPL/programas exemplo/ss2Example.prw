@@ -3,4 +3,11 @@
 
 user function ss2Example()
 	conout(procname())
+	conout(procname())
+	conout(procname())
+	conout(procname())
+	conout(procname())
+	
+	dbselect("SF2")
+	
 return
